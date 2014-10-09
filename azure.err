@@ -1,28 +1,29 @@
-Wed Oct 08 2014 15:09:25 GMT-0700 (PDT):
-{ [TypeError: Object #<Subscription> has no method 'getPortalUrl']
+Wed Oct 08 2014 15:28:40 GMT-0700 (PDT):
+{ [Error: Unable to locate site named http://shortlydeploy73.azurewebsites.net/login]
   stack: [Getter/Setter],
   __frame: 
-   { name: 'portalGitInitInstruction__15',
-     line: 670,
+   { name: 'lookupSiteNameAndWebSpace__20',
+     line: 871,
      file: '/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
      prev: 
-      { name: 'fallbackToPortal',
-        line: 692,
-        file: '/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
-        prev: [Object],
+      { name: 'siteAppsettings_listCommand__1',
+        line: 33,
+        file: '/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/site.appsetting._js',
+        prev: undefined,
         active: false,
-        offset: 2,
+        offset: 10,
         col: 6 },
-     active: true,
+     active: false,
      offset: 12,
-     col: 8 },
+     col: 4 },
   rawStack: [Getter] }
-TypeError: Object #<Subscription> has no method 'getPortalUrl'
-    at portalGitInitInstruction__15 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:684:54)
-    at portalGitInitInstruction__15 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:682:8)
-    at fallbackToPortal (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:694:6)
-    at getPublishingUser__16 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:728:8)
-    at LinkedRevisionControlClient_prototype__addRemotesToLocalGitRepo__5 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:177:29)
-    at GitClient_prototype_deploy__7 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:214:2)
-    at __4 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/site._js:272:12)
+Error: Unable to locate site named http://shortlydeploy73.azurewebsites.net/login
+    at ___ (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:867:20)
+    at ___ (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/node_modules/streamline/lib/callbacks/runtime.js:85:13)
+    at ___ (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:473:131)
+    at __tryCatch (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/node_modules/streamline/lib/callbacks/runtime.js:141:4)
+    at ___ (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:473:67)
+    at getSites__7 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:473:33)
+    at lookupSiteNameAndWebSpace__20 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:883:4)
+    at siteAppsettings_listCommand__1 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/site.appsetting._js:43:6)
 

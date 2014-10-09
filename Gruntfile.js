@@ -3,6 +3,10 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      dist: {
+        src: ['public/client/*.js'],
+        dest: 'public/dist/main.js'
+      }
     },
 
     mochaTest: {
@@ -21,11 +25,17 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      dist: {
+        files: {
+           'public/dist/ugly.js' : ['public/dist/main.js']
+        }
+      }
     },
 
     jshint: {
       files: [
         // Add filespec list here
+        'public/dist/ugly.js'
       ],
       options: {
         force: 'true',
@@ -38,13 +48,17 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      css: {
+        src: 'public/style.css',
+        dest: 'public/cssmin.css'
+      }
     },
 
     watch: {
       scripts: {
         files: [
           'public/client/**/*.js',
-          'public/lib/**/*.js',
+          'public/lib/**/*.js'
         ],
         tasks: [
           'concat',
@@ -59,6 +73,10 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'git push azure'
+      },
+      browse: {
+        command: 'azure site browse'
       }
     },
   });
@@ -90,23 +108,30 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
 
   grunt.registerTask('test', [
-    'mochaTest'
-  ]);
+    'mochaTest', 'jshint'
+  ]
+  );
 
   grunt.registerTask('build', [
+    'test', 'concat', 'uglify', 'cssmin'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
+      grunt.task.run('build');
+      grunt.task.run(['shell: prodServer']);
     } else {
+      grunt.task.run('build');
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
-  grunt.registerTask('deploy', [
+  grunt.registerTask('deploy','upload', function(n){
     // add your deploy tasks here
-  ]);
+    console.log("are we here");
+    grunt.task.run(['shell: browse']);
+  });
 
 
 };
