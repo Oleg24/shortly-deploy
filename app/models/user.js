@@ -7,21 +7,21 @@ var userSchema = mongoose.Schema({
 });
 
 
-
-var User = mongoose.model('User', usersSchema);
+var User = mongoose.model('User', userSchema);
 
 User.prototype.comparePassword = function(attemptedPassword, callback){
   bcrypt.compare(attemptedPassword, this.password, function(err, isMatch){
-    if(err){ return callback(err) };
+    if(err){ return callback(err); }
     callback(isMatch);
   });
 };
 
-linkSchema.pre('save', function(next){
-  bycrypt.hash(this.password, null, null, function(err, hash){
+userSchema.pre('save', function(next){
+  bcrypt.hash(this.password, null, null, function(err, hash){
     this.password = hash;
     next();
   });
+});
 
   // var cipher = bluebird.promisfy(bcrypt.hash);
   // cipher(this.password, null, null).bind(this)
@@ -29,6 +29,5 @@ linkSchema.pre('save', function(next){
   //     this.password = hash;
   //     next();
   //   });
-});
 
 module.exports = User;
