@@ -127,9 +127,10 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('deploy','upload', function(n){
+  grunt.registerTask('deploy', function(n){
     // add your deploy tasks here
     console.log("are we here");
+    grunt.task.run('upload');
     grunt.task.run(['shell: browse']);
   });
 
